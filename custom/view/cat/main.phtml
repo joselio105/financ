@@ -1,0 +1,46 @@
+<?php
+/**
+ * @version 19/02/2019 13:44:48
+ * @author jose_helio@gmail.com
+ *
+ */
+
+include_once PATH_INCLUDE.'modal.phtml';
+$data = HelperView::getViewData();
+?>
+<h2>Categorias</h2>
+<?php echo HelperView::printAlert()?>
+
+<div id="commands">
+	<?php echo $data['link']['add']?>
+</div>
+
+<?php if(!empty($data['list'])):?>
+    <table>
+    	<tr>
+    		<th></th>
+    		<th></th>
+    		<th>Nome</th>
+    		<th>Limite</th>
+    	</tr>
+    	<?php foreach ($data['list'] as $l):?>
+    		<tr>
+    			<td><?php echo $data['link']['udt'][$l['id']]?></td>
+    			<td colspan="2"><?php echo $l['nome']?></td>
+    			<td><?php echo HelperData::printLikeMoney($l['limite'])?></td>
+    		</tr>
+    		<?php foreach ($l['subs'] as $s):?>
+        		<tr>
+        			<td></td>
+        			<td><?php echo $data['link']['udt'][$s['id']]?></td>
+        			<td><?php echo "{$s['nome']}"?></td>
+        			<td><?php echo HelperData::printLikeMoney($s['limite'])?></td>
+        		</tr>
+    		<?php endforeach?>
+    	<?php endforeach?>
+    	<tr>
+    		<th colspan="3">TOTAL</th>
+    		<th><?php echo HelperData::printLikeMoney($data['soma'])?></th>
+    	</tr>
+    </table>
+<?php endif?>

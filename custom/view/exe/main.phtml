@@ -1,0 +1,31 @@
+<?php
+/**
+ * @version 04/04/2019 13:09:58
+ * @author jose_helio@gmail.com
+ *
+ */
+
+include_once PATH_INCLUDE.'modal.phtml';
+$data = HelperView::getViewData();
+?>
+<h2>Exercícios</h2>
+<?php echo HelperView::printAlert()?>
+
+<div id="commands">
+	<?php echo $data['link']['add']?>
+</div>
+
+<table>
+	<tr>
+    	<th></th>
+    	<th>Exercício</th>
+    	<th>Início</th>
+    </tr>
+    <?php foreach ($data['list'] as $l):?>
+    	<tr>
+    		<td><?php echo $data['link']['udt'][$l['id']]?></td>
+    		<td><?php echo HelperData::mesText(date('n', strtotime($l['exercicio'])))."/ ".date('Y', strtotime($l['exercicio']))?></td>
+    		<td><?php echo strftime('%d/ %m/ %Y', strtotime($l['inicio']))?></td>
+    	</tr>
+    <?php endforeach?>
+</table>

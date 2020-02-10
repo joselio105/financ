@@ -1,0 +1,72 @@
+<?php
+
+/**
+ * @version 21/11/2019 09:00:00
+ * @author jose_helio@gmail.com
+ *
+ */
+
+$data = HelperView::getViewData();
+?>
+<h2>Controle <?php echo HelperData::mesText(date('n', strtotime($data['mes'])))?></h2>
+<?php echo HelperView::printAlert()?>
+
+<nav id="commands">
+	<div class="command">
+		<?php echo $data['link']['add']?>
+	</div>
+	
+	<!-- Meses -->
+	<div class="command">
+		<label>Exercício</label>
+		<select class="filtro" id="mes">
+			<?php foreach ($data['meses'] as $id=>$exe):?>
+				<option value="<?php echo $id?>" <?php echo ($id==$data['mes'] ? 'SELECTED' : NULL)?>><?php echo $exe?></option>
+			<?php endforeach?>
+		</select>
+	</div> 
+</nav>
+
+<div class="column">
+	<h3>Categorias</h3>
+	<div id="table">
+		<table>
+			<tr>
+				<th class="filtro" id="nome">Categoria</th>
+				<th class="filtro" id="saldo">Saldo</th>
+				<th class="filtro" id="soma">Usado</th>
+				<th class="filtro" id="percent">Limite</th>
+			</tr>			
+			<tr class="total">
+				<td class="total"><?php echo $data['total']['link']?></td>
+				<td class="number total<?php echo ($data['total']['saldo']<0 ? ' negative' : NULL)?>"><?php echo HelperData::printLikeMoney($data['total']['saldo'])?></td>
+				<td class="number total"><?php echo HelperData::printLikeMoney($data['total']['soma'])?></td>
+				<td class="number total <?php echo ($data['total']['percent']>1 ? ' negative' : NULL)?>"><?php echo HelperData::printLikePercentage($data['total']['percent'])?></td>
+			</tr>
+			<?php foreach ($data['cat'] as $cat):?>		
+    			<tr>
+    				<td><?php echo $cat['link']?></td>
+    				<td class="number<?php echo ($cat['saldo']<0 ? ' negative' : NULL)?>"><?php echo HelperData::printLikeMoney($cat['saldo'])?></td>
+    				<td class="number"><?php echo HelperData::printLikeMoney($cat['soma'])?></td>
+    				<td class="number<?php echo ($cat['percent']>1 ? ' negative' : NULL)?>"><?php echo HelperData::printLikePercentage($cat['percent'])?></td>
+    			</tr>
+			<?php endforeach?>
+		</table>
+	</div>
+</div>
+
+<div class="column">
+	<h3>Calendário</h3>
+	<?php echo $data['calendary']?>
+	
+	<h3>Últimas Movimentações</h3>
+	<ul>
+		<?php foreach ($data['lastVals'] as $val):?>
+			<li>
+				<?php echo date('d/m/Y', strtotime($val['data']))?>
+				<?php echo $val['categoria']?>
+				<b><?php echo HelperData::printLikeMoney($val['valor'])?></b>
+			</li>
+		<?php endforeach?>
+	</ul>
+</div>

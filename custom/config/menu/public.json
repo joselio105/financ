@@ -1,0 +1,9 @@
+{
+    "login": {
+        "name": "login",
+        "ctlr": "auth",
+        "act": "main",
+        "title": "acesso a \u00e1rea restrita",
+        "permitions": null
+    }
+}

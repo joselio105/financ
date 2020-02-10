@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title><?php echo Start::$siteInfo->get_site_title()?></title>
+        <meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<?php echo Start::$siteInfo?>	
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="<?php echo PATH_JS?>jquery.maskedinput.js"></script>
+        <script type="text/javascript" src="<?php echo PATH_JS?>main.js"></script> 
+        <script type="text/javascript" src="<?php echo PATH_EXTRA?>ckeditor/ckeditor.js"></script>            
+        <link rel="stylesheet" href="<?php echo PATH_CSS?>main.css" type="text/css" />
+		<link rel="icon" href="<?php echo PATH_IMG?>favicon.png" />
+	</head>
+
+	<body>
+		<header>
+		<!-- Informações sobre o usuário -->
+        <?php $usr = HelperAuth::getUser();if(!empty($usr)):?>
+        	<div id="user">
+        		<p><?php echo $usr['nome']?> [<?php echo $usr['email']?>]</p>
+        	</div>
+        <?php endif?>
+        <div id="header_inner">	
+				<a id="logo_link" href="<?php echo URI?>" title="Aline Ilustraciones">
+					<img src="<?php echo PATH_IMG.'logotipo.png'?>" alt="logotipo" />
+				</a>
+				<a id="open_menu">&#9776;</a>
+				<menu id="main"><?php include_once FILE_MENU;?></menu>
+			</div>			
+		</header>
+		
+		<main><?php include_once VIEW_FILE?></main>
+		<footer>
+            <div id="footer_inner"> 
+            	<div>
+            		
+            	</div> 
+            </div>
+		</footer>
+	</body>
+	
+</html>

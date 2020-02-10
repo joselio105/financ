@@ -1,0 +1,57 @@
+<?php
+/**
+ * @version 25/02/2019 12:38:17
+ * @author jose_helio@gmail.com
+ *
+ */
+
+include_once PATH_INCLUDE.'modal.phtml';
+$data = HelperView::getViewData();
+?>
+<h2><?php echo $data['title']?></h2>
+<?php echo HelperView::printAlert()?>
+
+<div id="commands">
+	
+	<!-- Meses -->
+	<div class="command">
+		<label>Exercício</label>
+		<select class="filtro" id="mes">
+			<?php foreach ($data['meses'] as $id=>$exe):?>
+				<option value="<?php echo $id?>" <?php echo ($id==$data['mes'] ? 'SELECTED' : NULL)?>><?php echo $exe?></option>
+			<?php endforeach?>
+		</select>
+	</div> 
+	
+	<!-- Categorias -->
+	<div class="command">
+		<label>Categoria</label>
+		<select class="filtro" id="categoria_id">
+			<?php foreach ($data['categorias'] as $id=>$cat):?>
+				<option value="<?php echo $id?>" <?php echo ($data['categoria_id']==$id ? 'selected' : NULL)?>><?php echo $cat?></option>
+			<?php endforeach?>
+		</select>
+	</div>
+</div>
+
+<table>
+	<tr>
+		<th></th>
+		<th>Data</th>
+		<th>Valor</th>
+	</tr>
+	<?php foreach ($data['lista'] as $l):?>
+		<tr>
+			<td>
+				<?php echo $data['link']['udt'][$l['id']]?>
+				<?php echo $data['link']['del'][$l['id']]?>
+			</td>
+			<td><?php echo date('d-m-Y', strtotime($l['data']))?></td>
+			<td><?php echo HelperData::printLikeMoney($l['valor'])?></td>
+		</tr>
+	<?php endforeach?>
+	<tr>
+		<th colspan="2">TOTAL</th>
+		<th><?php echo HelperData::printLikeMoney($data['total'])?></th>
+	</tr>
+</table>

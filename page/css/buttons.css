@@ -1,0 +1,32 @@
+.pass, .add, .del, .udt, .close, .certificado, .download, .usr, .detalhe, .lst_temas, .lst_orientacao, .usr_add, .usr_del, .code, .acs0, .acs1, .acs2, .acs3, .acs4, .acs5, .acs_empty, .replace, .add_action, .add_view {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 40px 40px;
+	border-radius: 50%;
+	width: 50px!important;;
+}
+
+.add{background-image: url(../img/icons/add.svg);}
+.udt{background-image: url(../img/icons/udt.svg);}
+.del{background-image: url(../img/icons/del.svg);}
+.close{background-image: url(../img/icons/close.svg);}
+.certificado{background-image: url(../img/icons/certificado.svg);}
+.download{background-image: url(../img/icons/download.svg);}
+.pass{background-image: url(../img/icons/lock.svg);}
+.usr{background-image: url(../img/icons/usr.svg);}
+.detalhe{background-image: url(../img/icons/detalhes.svg);}
+.lst_temas{background-image: url(../img/icons/temas.svg);}
+.lst_orientacao{background-image: url(../img/icons/orientacoes.svg);}
+.usr_add{background-image: url(../img/icons/usr_add.svg);}
+.usr_del{background-image: url(../img/icons/usr_del.svg);}
+.code{background-image: url(../img/icons/code.svg);}
+.acs0{background-image: url(../img/icons/acs0.svg);}
+.acs1{background-image: url(../img/icons/acs1.svg);}
+.acs2{background-image: url(../img/icons/acs2.svg);}
+.acs3{background-image: url(../img/icons/acs3.svg);}
+.acs4{background-image: url(../img/icons/acs4.svg);}
+.acs5{background-image: url(../img/icons/acs5.svg);}
+.acs_empty{background-image: url(../img/icons/acs_empty.svg);}
+.replace{background-image: url(../img/icons/replace.svg);}
+.add_view{background-image: url(../img/icons/add_view.svg);}
+.add_action{background-image: url(../img/icons/add_action.svg);}
