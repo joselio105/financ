@@ -1,3 +1,6 @@
 /extra/
 /content/
 /custom/config/db.json
+/.settings/
+.buildpath
+.project
